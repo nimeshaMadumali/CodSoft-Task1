@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        :root{
+              --silver: #C0C0C0;
+        }
+
+        html{
+             font-size: 62.5%;
+             scroll-behavior: smooth;
+             scroll=padding-top: 6rem;
+             overflow-x: hidden;
+        }
+        section{
+            padding:2rem 9%;
+        }
+
+        .heading{
+            text-align:center;
+            font-size:4rem;
+            color:BLACK;
+            font-weight: bolder;
+            padding:1rem;
+            margin:2rem 0;
+            background: rgba(255, 51, 153, .05);
+        }
+
+        .btn{
+            display: inline-block;
+            margin-top: 1rem;
+            border-radius:5rem;
+            background: white;
+            color: Blue;
+            padding:.9rem 3.5rem;
+            cursor:pointer;
+            font-size: 1.7rem;
+        }
+        .btn:hover{
+            background:var(--silver);
+        }
+
+        body{
+            font-family: Arial, sans-serif, Verdana, Geneva, Tahoma;
+            font-color: white;
+            <!--background-color: #f0f0f0;-->
+            margin: 0;
+            padding: 0;
+            outline: none; border:none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+            }
+
+        header{
+            background-color: white;
+            color: Blue;
+            <!--font-size: 10px;-->
+            text-align: Align Left;
+            padding: 1rem 9%;
+
+            position: fixed;
+            top: 0; left:0; right:0;
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+
+        }
+
+        header .logo{
+                     font-size: 7rem;
+                     color: Purple;
+                     font-weight: bolder;
+                     -webkit-text-stroke: 3px #8F00FF;
+                     justify-logo: center;
+                     align-items: center;
+        }
+
+        header .logo span{
+            color:rgb(63, 26, 248);
+        }
+
+        header .navbar a{
+            font-size: 3rem;
+            padding:0 1.5rem;
+            color: Black;
+            align-items: center;
+        }
+
+        header .navbar a:hover{
+            color: rgb(63, 26, 248);
+        }
+
+        header .icons a{
+            font-size: 2.5rem;
+            color: #333;
+            margin-left: 1.5rem;
+        }
+
+        header .icons a:hover{
+            color: rgb(63, 26, 248);
+        }
+
+        header #toggler{
+            display:none;
+        }
+
+        header .fa-bars{
+            font-size:3rem;
+            color:#333;
+            border-radius: .5rem;
+            padding:.5rem 1.5rem;
+            cursor:pointer;
+            border: .1rem solid rgba(0,0,0,.3);
+            <!--display: none;--!>
+        }
+
+        footer{
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .row{
+             display: flex;
+             justify-content: space-around;
+             margin: 20px 0;
+        }
+
+        .column{
+                flex: 1;
+                background-color: #fff;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width:991px){
+             html{
+                 font-size: 55%;
+             }
+             header{
+                padding:2rem;
+             }
+             section{
+                padding:2rem;
+             }
+
+             body .home{
+                background-position:left;
+             }
+        }
+
+        @media (max-width:768px){
+            header .fa-bars{
+                display: block;
+            }
+
+            header .navbar{
+                position:absolute;
+                top:100%; left:0; right:0;
+                background: #eee;
+                border-top: 1rem solid rgba(0,0,0,.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            }
+
+            header #toggler:checked ~ .navbar{
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            header .navbar a{
+                margin: 1.5rem;
+                padding:1.5rem;
+                background:#fff;
+                border:.1rem solid rgba(0,0,0,.1);
+                display:block;
+            }
+
+            .home .content h3{
+                font-size: 5rem;
+            }
+
+        }
+
+        body .home{
+            display: flex;
+            align-items:center;
+            min-height: 100vh;
+            background: url(https://wallpaperaccess.com/full/3239480.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        body .home .content{
+            max-width: 70rem;
+        }
+        body .home .content h3{
+            font-size: 6rem;
+            color: #3CFED1;
+        }
+        body .home .content p{
+            font-size:1.5rem;
+            color :white;
+            padding:1rem 0;
+            line-height: 1.5;
+        }
+
+        body .courses .heading{
+            font-size: 5rem;
+        }
+
+         body .courses .column{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap:wrap;
+            padding: 2rem 0;
+            padding-bottom: 3rem;
+         }
+         body .courses .image-container{
+            flex:1 1 30rem;
+            position: relative;
+         }
+         body .courses .image-container img{
+            width:10%;
+            border:1.5rem solid #fff;
+            border-radius: .5rem;
+            box-shadow:0 .5rem 1rem rgba(.2,.2,.1,.1);
+            height: 10%;
+            object-fit: cover;
+         }
+         body .courses .column .content{
+            flex:1 1 40rem;
+         }
+         body .courses .column .content h1{
+            font-size: 4rem;
+            color: Black;
+         }
+         body .courses .column .content p{
+            font-size: 2rem;
+            color: black bean;
+            padding: .5rem 0;
+            padding-top: 1rem;
+            line-height:1.5;
+         }
+         body .courses .column .content a{
+            font-size: 2.5rem;
+            border: .1rem solid rgba(0,0,0,.3);
+         }
+
+        body .about .heading{
+            font-size: 5rem;
+        }
+
+         body .about .column{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap:wrap;
+            padding: 2rem 0;
+            padding-bottom: 3rem;
+         }
+         body .about .image-container{
+            flex:1 1 40rem;
+            position: relative;
+         }
+         body .about .image-container img{
+            width:50%;
+            border:1.5rem solid #fff;
+            border-radius: .5rem;
+            box-shadow:0 .5rem 1rem rgba(.2,.2,.1,.1);
+            height: 100%;
+            object-fit: cover;
+         }
+         body .about .column .content{
+            flex:1 1 40rem;
+         }
+         body .about .column .content h1{
+            font-size: 4rem;
+            color: #387A57;
+         }
+         body .about .column .content p{
+            font-size: 2.5rem;
+            color: black bean;
+            padding: .5rem 0;
+            padding-top: 1rem;
+            line-height:1.5;
+         }
+
+         .contact .row{
+            display: flex;
+            flex-wrap: wrap-reverse;
+            gap:1.5rem;
+            align-items: center;
+         }
+         .contact .row form{
+            flex:1 1 40rem;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+         }
+         .contact .row form .box{
+            padding:1rem;
+            font-size: 1.7rem;
+            color:#333;
+            text-transform:none;
+            border:.1rem solid rgba(0,0,0,.1);
+            border-radius:.5rem;
+            margin: .7rem 0;
+            width: 100%;
+         }
+         .contact .row form .box:focus{
+            border-color: black;
+         }
+         .contact .row form textarea{
+            height: 15rem;
+            resize: none;
+         }
+         .footer .box-container{
+            display: flex;
+            flex-wrap:wrap;
+            gap:1.5rem;
+         }
+         .footer .box-container .box{
+            flex:1 1 25rem;
+         }
+         .footer .box-container .box h3{
+            color:#333;
+            font-size:2.5rem;
+            padding:1rem 0;
+         }
+         .footer .box-container .box a{
+            display: block;
+            color:#666;
+            font-size:1.5rem;
+            padding:1rem 0;
+         }
+         .footer .box-container .box a:hover{
+            color: blue;
+            text-decoration: underline;
+         }
+         .footer .credit{
+            text-align: center;
+            padding:1.5rem;
+            margin-top:1.5rem;
+            padding-top:2.5rem;
+            font-size: 2rem;
+            color: #333;
+            border-top: .1rem solid rgba(0,0,0,.1);
+         }
+         .footer .credit span{
+            color: blue;
+         }
+
+    </style>
+</head>
+
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<nav>
+    <a href="#" class="logo">CodSoft<span>.</span></a>
+    <ul class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#courses">Courses</a>
+        <a href="#contact">Contact Us</a>
+    </ul>
+
+</nav>
+<div class="icons">
+    <a href="#" class="fa-brands fa-square-twitter"></a>
+    <a href="#" class="fa-brands fa-whatsapp"></a>
+    <a href="#" class="fa-solid fa-phone"></a>
+    <a href="#" class="fa-brands fa-facebook-f"></a>
+    <a href="#" class="fa-brands fa-youtube"></a>
+    <a href="#" class="fa-solid fa-message-exclamation"></a>
+    <a href="#" class="fas fa-heart"></a>
+    <a href="#" class="fas fa-shopping-cart"></a>
+    <a href="#" class="fas fa-email"></a>
+</div>
+</header>
+<body>
+
+<section class="home" id="home">
+    <div class="content">
+        <h3>Elevate Your career with CodSoft's Exciting Internships</h3>
+        <p>CodSoft are IT services and IT consultancy that specializes in creating innovative solutions for businesses.
+            We are passionate about technology and believe in the power of software to transform the world.</p>
+        <a href="#" class="btn">Register Now</a>
+    </div>
+</section>
+<section class="about" id="about">
+    <h1 class="heading"><ul> About Us</ul></h1>
+    <div class="column">
+        <div class="image-container">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=608,fit=crop,q=95/Aq20eV79zLfpXV6b/logo-png-mnl7npnlXjHPl9KV.png">
+        </div>
+
+        <div class="content">
+            <h1>Why choose Us?</h1>
+            <p>Our internship program is just one of the ways in which we are investing in the future of the industry. We believe practical knowledge is the key to success in the tech industry. Our aim is to help students lacking basic skills by offering hands-on learning through live projects and real-world examples.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </div>
+</section>
+<section class="courses" id="courses">
+    <h1 class="heading">Courses</h1>
+    <div class="column">
+        <div class="image">
+            <img src="https://www.techprevue.com/wp-content/uploads/2017/04/top-web-development-blogs.jpg" width="500" height="500">
+        </div>
+        <div class="content">
+            <h1>Web Development</h1>
+            <p>web development internship that provides practical work experience and an introduction to crafting and enhancing web-based systems. This opportunity offers engaging challenges and real-world projects, allowing you to gain hands-on experience in the dynamic fields of web and app development. Join our award-winning innovation team and kickstart your journey to success in a supportive and enriching environment.</p>
+            <a href="#" class="btn">Apply</a>
+        </div>
+        <div class="image">
+            <img src="https://www.questinfosense.com/wp-content/uploads/android-app-development.png" width="500" height="500">
+        </div>
+        <div class="content">
+            <h1>Android Development</h1>
+            <p>Android, the user-friendly open-source operating system, has transformed the way we access internet applications and carry out important tasks on our mobile devices. At CODSOFT, we understand the growing preference for mobile usage and offer the ideal starting point for your app development journey. Discover the simplicity of creating your first app with us and unlock a world of endless possibilities in the realm of mobile innovation.</p>
+            <a href="#" class="btn">Apply</a>
+        </div>
+        <div class="image">
+            <img src="https://lerablog.org/wp-content/uploads/2020/08/Data-Science.jpg" width="500" height="500">
+        </div>
+        <div class="content">
+            <h1>Data Science</h1>
+            <p>Remote Data Science internships are a unique chance to gain experience in the midst of the virtual workforce while remaining immersed in one of the top organizations in the field. Data analysis internships are some of the most competitive and popular within the broader data science field.</p>
+            <a href="#" class="btn">Apply</a>
+        </div>
+
+        <div class="image">
+            <img src="https://www.bocasay.com/wp-content/uploads/2022/03/JAVA-1-1024x1024.png" width="500" height="500">
+        </div>
+        <div class="content">
+            <h1>Java Programming</h1>
+            <p>Become a Java Programming master from the convenience of your own home and unlock incredible job prospects with our certification program. Join our comprehensive 4-week internship program, where you'll learn everything from web application development to deployment using Java Build a solid foundation for your career with hands-on training and real-world application in a supportive and collaborative environment.</p>
+            <a href="#" class="btn">Apply</a>
+        </div>
+        <div class="image">
+            <img src="https://i.morioh.com/200613/df31a659.jpg" width="500" height="500">
+        </div>
+        <div class="content">
+            <h1>C++ Programming</h1>
+            <p>Gain mastery in C++ programming from the comfort of your home and open doors to amazing job opportunities with our certification program. Enroll in our intensive 4-week internship, where you'll acquire knowledge in web application development and deployment using C++. Establish a strong base for your career and real-world implementation within a supportive and collaborative setting. </p>
+            <a href="#" class="btn">Apply</a>
+        </div>
+        <div class="image">
+            <img src="https://mifago.com/wp-content/uploads/2021/05/python-programming-language-1024x1024.png" width="500" height="500">
+        </div>
+        <div class="content">
+            <h1>Python Programming</h1>
+            <p>Join our 4-week comprehensive internship program and master the fundamentals of programming in Python from the comfort of your own home. Gain the skills and knowledge to apply for exciting job opportunities in the field. In this program, you will learn everything from web development to the deployment of Python-based web applications. Get certified and enhance your career prospects. Don't miss this opportunity to excel in Python Programming!</p>
+            <a href="#" class="btn">Apply</a>
+        </div>
+    </div>
+</section>
+<section class="contact" id="contact">
+    <h1 class="heading">Contact Us</h1>
+    <div class="row">
+        <form action="">
+            <input type="text" placeholder="name" class="box">
+            <input type="email" placeholder="email" class="box">
+            <input type="text" placeholder="courseName" class="box">
+            <textarea name="" class="box" placeholder="message" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="send message" class="btn">
+        </form>
+    </div>
+</section>
+<section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>Quick links</h3>
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Internships</a>
+            <a href="#">About Us</a>
+        </div>
+        <div class="box">
+            <h3>Policy</h3>
+            <a href="#">Privacy policy</a>
+            <a href="#">Refund policy</a>
+            <a href="#">Terms and conditions</a>
+        </div>
+        <div class="box">
+            <h3>Contact Info</h3>
+            <a href="#">123-456-789</a>
+            <a href="#">contact@codsoft.in</a>
+            <a href="#">Lokenath bose garden lane, Kolkata, West Bengal</a>
+        </div>
+    </div>
+    <div class="credit">&copy;created by <span>Madhumalee</span> | all right reserved</div>
+</section>
+</body>
+</html>
